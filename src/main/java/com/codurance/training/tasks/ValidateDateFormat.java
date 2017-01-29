@@ -6,13 +6,11 @@ import java.util.Date;
 
 public class ValidateDateFormat {
 
-	public static boolean isThisDateValid(String dateToValidate, String dateFromat){
-
-		if(dateToValidate == null){
+	public static boolean isValidateDateFormat(String dateToValidate) {
+		if (dateToValidate == null) {
 			return false;
 		}
-
-		SimpleDateFormat sdf = new SimpleDateFormat(dateFromat);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		sdf.setLenient(false);
 
 		try {
@@ -22,7 +20,6 @@ public class ValidateDateFormat {
 		} catch (ParseException e) {
 			return false;
 		}
-
 		return true;
 	}
 }

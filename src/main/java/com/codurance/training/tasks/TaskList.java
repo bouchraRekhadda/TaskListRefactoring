@@ -2,8 +2,6 @@ package com.codurance.training.tasks;
 
 import java.io.BufferedReader;
 import java.io.*;
-import java.util.*;
-import java.util.LinkedHashMap;
 
 import com.condurance.training.commands.*;
 
@@ -52,6 +50,22 @@ public final class TaskList implements Runnable {
                 	 CommandObject = new UncheckTask(out);
       				((UncheckTask) CommandObject).execute(commandRest[1]);
                      break;
+                 case "delete":
+                	 CommandObject = new DeleteTask(out);
+      				((DeleteTask) CommandObject).execute(commandRest[1]);
+                     break;
+                 case "deadline":
+                	 CommandObject = new DeadLineTask(out);
+      				((DeadLineTask) CommandObject).execute(commandRest[1]);
+                     break;
+                 case "view":
+                	 CommandObject = new ViewBy(out);
+      				((ViewBy) CommandObject).execute(commandRest[1]);
+                     break;
+                 case "today":
+                	 CommandObject = new ViewBy(out);
+                	 ((ViewBy) CommandObject).TodayTasks();
+                     break;
                  case "help":
                      help();
                      break;
@@ -70,6 +84,10 @@ public final class TaskList implements Runnable {
         out.println("  add task <project name> <task description>");
         out.println("  check <task ID>");
         out.println("  uncheck <task ID>");
+        out.println("  delete <task ID>");
+        out.println("  deadline <task ID> <Date>");
+        out.println("  today");
+        out.println("  view by <project Name> / < Date> / <DeadLine>");
         out.println();
     }
 
